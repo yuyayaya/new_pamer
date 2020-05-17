@@ -1,0 +1,29 @@
+タイトル：<%= @plan.title%><br><br>
+コンテンツ：<%= @plan.content%>
+
+
+<%= form_with model: @comment, local: true do |f| %>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    
+    <%= f.text_area :content %>
+    <%= f.hidden_field :plan_id %>
+    <%= f.submit "コメントを投稿する" %>
+<% end %>
+
+<% @plan.comments.each do |comment| %>
+    <%= comment.content %>
+<% end %>
+
+<%= form_with url: favorites_path,local: true do |f| %>
+    <%= f.submit "お気に入り追加" %>
+<% end %>
+
+<%= form_with url: favorite_path, method: :delete, local: true do |f| %>
+    <%= f.submit "お気に入り削除" %>
+<% end %>
+
+
+
+

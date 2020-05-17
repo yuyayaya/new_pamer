@@ -1,0 +1,14 @@
+<table  with=“75%” border=“3”>
+      <tr>
+        <th style="width:30%;">タイトル</th>
+        <th>コンテンツ</th>
+        <th>詳細ページへ</th>
+      </tr>
+<% @plans.each do |plan| %>
+      <tr>
+         <td><%= plan.title %></td>
+         <td><%= plan.content %></td>
+         <td><%= link_to "プラン詳細へ", plan_path(plan) %></td>
+      </tr>
+<% end %>
+</table>
